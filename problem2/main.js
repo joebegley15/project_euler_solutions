@@ -7,6 +7,7 @@ function evenSumUnder(n) {
 	var fibArr = [0,1];
 	var sum = 0;
 	while (fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2] < n) {
+		var next = [fibArr.length - 1] + fibArr[fibArr.length - 2];
 		fibArr.push(fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2]);
 		if ((fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2]) % 2 == 0) {
 			sum += fibArr[fibArr.length - 1] + fibArr[fibArr.length - 2];
