@@ -1,9 +1,10 @@
 // Get Factors
 function getFactors(n) {
 	var factors = [];
-	for (var i = 1; i <= n; i++) {
+	for (var i = 1; i <= Math.sqrt(n); i++) {
 		if (n % i == 0) {
 			factors.push(i);
+			factors.push(n/i);
 		}
 	}
 	return factors;
@@ -20,7 +21,7 @@ function greatestPrimeFactor(n) {
 	var allFactors = getFactors(n);
 	var gpf = 1;
 	allFactors.map(function(factor){
-		if (isPrime(factor)) {
+		if (isPrime(factor) && factor > gpf) {
 			gpf = factor;
 		}
 	})
@@ -29,4 +30,5 @@ function greatestPrimeFactor(n) {
 
 // Execute
 
-console.log(greatestPrimeFactor(101));
+
+console.log(greatestPrimeFactor(600851475143));
