@@ -30,5 +30,4 @@ function greatestPrimeFactor(n) {
 
 // Execute
 
-
 console.log(greatestPrimeFactor(600851475143));
