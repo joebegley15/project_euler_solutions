@@ -1,0 +1,1 @@
+print(getFactors(10))

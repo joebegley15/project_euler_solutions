@@ -1,30 +1,49 @@
 // Get Factors
-function getFactors(n) {
-	var factors = [];
-	for (var i = 1; i <= Math.sqrt(n); i++) {
-		if (n % i == 0) {
-			factors.push(i);
-			factors.push(n/i);
+const getFactors = function(n) {
+	const factors = [], limit = Math.sqrt(n);
+	for (var i = 1; i <= limit; i+=2) {
+		const div = Math.floor(n / i);
+		if (div * i === n) {
+		    factors.push(i);
+		    if (div !== n) {
+		        factors.push(div);
+		    }
 		}
 	}
 	return factors;
 }
 // Determine If Factors Are Prime
 
-function isPrime(n) {
-	return getFactors(n).length == 2;
-}
+const isPrime = (n) => {
+    if (n === 2) {
+        return true;
+    } else if (n < 2 || n % 2 === 0) {
+        return false;
+    }
+    if (n < 9) {
+        return true;
+    } else if (n % 3 === 0) {
+        return false;
+    }
+
+    const sqrt = Math.floor(Math.sqrt(n));
+    for (let i = 5; i <= sqrt; i += 6) {
+        if (n % i === 0) {
+            return false;
+        }
+        if (n % (i + 2) === 0) {
+            return false;
+        }
+    }
+
+    return true;
+};
 
 // Function Greatest Prime Factor
 
-function greatestPrimeFactor(n) {
-	var allFactors = getFactors(n);
-	var gpf = 1;
-	allFactors.map(function(factor){
-		if (isPrime(factor) && factor > gpf) {
-			gpf = factor;
-		}
-	})
+const greatestPrimeFactor = function(n) {
+	let factors = getFactors(n);
+	let gpf = factors.reduce((gpf = 1, factor) => factor > gpf && isPrime(factor) ? factor : gpf);
 	return gpf;
 }
 
