@@ -49,4 +49,4 @@ const greatestPrimeFactor = function(n) {
 
 // Execute
 
-console.log(greatestPrimeFactor(600851475143));
+console.log(greatestPrimeFactor(6008514751431919797));
