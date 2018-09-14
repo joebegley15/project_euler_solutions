@@ -1,24 +1,15 @@
-// Smallest positive number that is evenly divisible by all of the numbers from 1 to n
-
-
-// Smallest Mult
-// Uses a loop to check if the number is divisible by a number already added to the final product. If it is, we remove it.
-
-function smallestMult(n) {
-	var arr = [], product = 1;
-	for (var i = 1; i <= n; i++) {
-		var pushMe = i;
-		arr.map(function(element){
-			if (pushMe % element == 0){
-				pushMe = pushMe / element;
+const smallestMult = function(n) {
+	const mults = [];
+	for (let i = 1; i <= n; i++) {
+		let newMult = i;
+		mults.forEach(function(mult){
+			if (newMult % mult == 0) {
+				newMult /= mult;
 			}
-		})			
-		arr.push(pushMe);
+		})
+		mults.push(newMult);
 	}
-	arr.map(function(element){
-		product *= element;
-	})
-	return product;
+	return mults.reduce((product = 1, mult) => product *= mult);
 }
 
 console.log(smallestMult(20));
